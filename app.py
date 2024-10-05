@@ -1,0 +1,11 @@
+import pygame
+#DIRETTIVE
+#3 mondi, da 3 livelli ciascuno + stanza di spawn + tutorial; vista laterale 2d pixel
+#interface: total score, xp, life, stats.
+
+#menu data: dopo livello 2
+
+#start= accedi a salvataggio/new game->personali
+
+#
+
