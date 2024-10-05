@@ -12,3 +12,6 @@ if __name__ == "__main__":
     main()
 
     #gestione mondi file come librerie o ...
+    #ricerca ambiente (assets)
+    #personaggi MAX 5+2
+    #musiche
