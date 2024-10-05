@@ -1,11 +1,14 @@
 import pygame
-#DIRETTIVE
-#3 mondi, da 3 livelli ciascuno + stanza di spawn + tutorial; vista laterale 2d pixel
-#interface: total score, xp, life, stats.
+from Library.Settings import StartMenu
+def main():
+    screen = StartMenu()
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+    pygame.quit()
+if __name__ == "__main__":
+    main()
 
-#menu data: dopo livello 2
-
-#start= accedi a salvataggio/new game->personali
-
-print("ciao")
-
+    #gestione mondi file come librerie o ...
