@@ -7,5 +7,5 @@ import pygame
 
 #start= accedi a salvataggio/new game->personali
 
-#
+print("ciao")
 
