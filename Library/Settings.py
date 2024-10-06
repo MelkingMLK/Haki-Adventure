@@ -1,13 +1,18 @@
 import pygame
 import sys
+from Library.manager import SettingsManager
 
 # Funzione per gestire il menu delle impostazioni
 def Settings(screen, width, height, font, button_color, border_color, text_color, hover_color):
+    # Crea un'istanza di SettingsManager
+    settings_manager = SettingsManager('./Log/general.xml')
+    current_resolution = settings_manager.get_current_resolution()
+    current_master_volume = settings_manager.get_current_master_volume()
+    current_effects_volume = settings_manager.get_current_effects_volume()
+
     # Dimensioni e posizione del rettangolo (più largo e più alto)
     rect_width, rect_height = 400, 450  # Rettangolo delle impostazioni
     rect_x = (width - rect_width) // 2
-
-    # Rettangolo sotto la scritta "Haki's Adventure" (esempio: posizionato a 25% dell'altezza)
     rect_y = int(height * 0.25)
     settings_rect = pygame.Rect(rect_x, rect_y, rect_width, rect_height)
 
@@ -17,42 +22,89 @@ def Settings(screen, width, height, font, button_color, border_color, text_color
     pygame.draw.rect(screen, button_color, inner_settings_rect)
 
     # Crea un rettangolo trasparente
-    transparent_surface = pygame.Surface((rect_width - 6, rect_height - 6), pygame.SRCALPHA)  # Crea una superficie trasparente
-    transparent_surface.fill((0, 0, 0, 128))  # Imposta il colore con alpha (0-255), 128 per 50% di trasparenza
-
-    # Disegna il rettangolo trasparente sopra
-    screen.blit(transparent_surface, (rect_x + 3, rect_y + 3))  # Offset di 3 px per allineare il bordo
+    transparent_surface = pygame.Surface((rect_width - 6, rect_height - 6), pygame.SRCALPHA)
+    transparent_surface.fill((0, 0, 0, 128))
+    screen.blit(transparent_surface, (rect_x + 3, rect_y + 3))
 
     # Posiziona il testo "Settings" appena sotto il bordo superiore del rettangolo
     text_surface = font.render("Settings", True, text_color)
-    text_rect = text_surface.get_rect(center=(rect_x + rect_width // 2, rect_y + 40))  # Offset di 40 px dal bordo superiore
+    text_rect = text_surface.get_rect(center=(rect_x + rect_width // 2, rect_y + 40))
     screen.blit(text_surface, text_rect)
 
-    # Crea il bottone "BACK"
-    back_button_width, back_button_height = 200, 60
-    back_button_x = (width - back_button_width) // 2
-    back_button_y = rect_y + rect_height - 80  # Posiziona il bottone 80 px sopra il fondo del rettangolo
-    back_button_rect = pygame.Rect(back_button_x, back_button_y, back_button_width, back_button_height)
+    # Lista delle risoluzioni disponibili
+    resolutions = [
+        "1100x1150",
+        "1920x1080",
+        "1280x720",
+        "1366x768",
+        "2560x1440",
+        "3840x2160"
+    ]
+    current_resolution_index = resolutions.index(current_resolution)
 
-    # Disegna il bottone "BACK"
-    draw_button(screen, back_button_rect, "BACK", font, button_color, border_color, text_color, hover_color)
+    # Variabile per il volume master e gli effetti
+    master_volume = current_master_volume
+    effects_volume = current_effects_volume
 
-    return back_button_rect  # Restituisci il rettangolo del bottone BACK
+    # Funzione per disegnare i bottoni
+    def draw_button(rect, text, hover=False):
+        # Disegna il bordo (bianco)
+        pygame.draw.rect(screen, hover_color if hover else border_color, rect)
+        # Riduci il rettangolo per disegnare l'interno (nero)
+        inner_rect = rect.inflate(-6, -6)  # Riduce il rettangolo di 6 pixel per creare il bordo
+        pygame.draw.rect(screen, button_color, inner_rect)
 
-# Funzione per disegnare i bottoni con bordo bianco e interno nero
-def draw_button(screen, rect, text, font, button_color, border_color, text_color, hover_color, hover=False):
-    # Disegna il bordo (bianco)
-    pygame.draw.rect(screen, hover_color if hover else border_color, rect)
-    # Riduci il rettangolo per disegnare l'interno (nero)
-    inner_rect = rect.inflate(-6, -6)  # Riduce il rettangolo di 6 pixel per creare il bordo
-    pygame.draw.rect(screen, button_color, inner_rect)
+        # Disegna il testo centrato
+        text_surface = font.render(text, True, text_color)
+        text_rect = text_surface.get_rect(center=rect.center)
+        screen.blit(text_surface, text_rect)
 
-    # Disegna il testo centrato
-    text_surface = font.render(text, True, text_color)
-    text_rect = text_surface.get_rect(center=rect.center)
-    screen.blit(text_surface, text_rect)
+    # Loop principale per il menu delle impostazioni
+    while True:
+        # Aggiorna lo schermo
+        screen.blit(transparent_surface, (rect_x + 3, rect_y + 3))
 
-# Funzione per gestire il menu principale
+        # Disegna le impostazioni
+        resolution_text_surface = font.render(f"Resolution: {resolutions[current_resolution_index]}", True, text_color)
+        screen.blit(resolution_text_surface, (rect_x + 20, rect_y + 100))
+        master_volume_text_surface = font.render(f"Master Volume: {master_volume}%", True, text_color)
+        effects_volume_text_surface = font.render(f"Effects Volume: {effects_volume}%", True, text_color)
+        screen.blit(master_volume_text_surface, (rect_x + 20, rect_y + 150))
+        screen.blit(effects_volume_text_surface, (rect_x + 20, rect_y + 200))
+
+        # Disegna il bottone "BACK"
+        back_button_width, back_button_height = 200, 60
+        back_button_x = (width - back_button_width) // 2
+        back_button_y = rect_y + rect_height - 80
+        back_button_rect = pygame.Rect(back_button_x, back_button_y, back_button_width, back_button_height)
+        draw_button(back_button_rect, "BACK", back_button_rect.collidepoint(pygame.mouse.get_pos()))
+
+        # Gestisci eventi
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if back_button_rect.collidepoint(pygame.mouse.get_pos()):
+                    # Torna al menu principale
+                    settings_manager.update_master_volume(master_volume)
+                    settings_manager.update_effects_volume(effects_volume)
+                    settings_manager.update_resolution(resolutions[current_resolution_index])
+                    return
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:  # Freccia su per aumentare il volume master
+                    master_volume = min(master_volume + 10, 100)
+                elif event.key == pygame.K_DOWN:  # Freccia giù per diminuire il volume master
+                    master_volume = max(master_volume - 10, 0)
+                elif event.key == pygame.K_LEFT:  # Freccia sinistra per diminuire la risoluzione
+                    current_resolution_index = (current_resolution_index - 1) % len(resolutions)
+                elif event.key == pygame.K_RIGHT:  # Freccia destra per aumentare la risoluzione
+                    current_resolution_index = (current_resolution_index + 1) % len(resolutions)
+
+        pygame.display.update()
+
 def StartMenu():
     width, height = 1100, 550
     pygame.init()
@@ -97,6 +149,19 @@ def StartMenu():
         title_rect = title_surface.get_rect(center=(width // 2, height // 6))
         screen.blit(title_surface, title_rect)
 
+    # Funzione per disegnare i bottoni
+    def draw_button(rect, text, hover=False):
+        # Disegna il bordo (bianco)
+        pygame.draw.rect(screen, hover_color if hover else border_color, rect)
+        # Riduci il rettangolo per disegnare l'interno (nero)
+        inner_rect = rect.inflate(-6, -6)  # Riduce il rettangolo di 6 pixel per creare il bordo
+        pygame.draw.rect(screen, button_color, inner_rect)
+
+        # Disegna il testo centrato
+        text_surface = font.render(text, True, text_color)
+        text_rect = text_surface.get_rect(center=rect.center)
+        screen.blit(text_surface, text_rect)
+
     # Loop principale
     while True:
         screen.blit(background_image, (0, 0))  # Disegna lo sfondo
@@ -108,9 +173,9 @@ def StartMenu():
         # Disegna la schermata in base allo stato
         if current_state == "menu":
             # Disegna i bottoni del menu principale con hover effect
-            draw_button(screen, play_button_rect, "Play", font, button_color, border_color, text_color, hover_color, play_button_rect.collidepoint(mouse_pos))
-            draw_button(screen, settings_button_rect, "Settings", font, button_color, border_color, text_color, hover_color, settings_button_rect.collidepoint(mouse_pos))
-            draw_button(screen, exit_button_rect, "Exit", font, button_color, border_color, text_color, hover_color, exit_button_rect.collidepoint(mouse_pos))
+            draw_button(play_button_rect, "Play", play_button_rect.collidepoint(mouse_pos))
+            draw_button(settings_button_rect, "Settings", settings_button_rect.collidepoint(mouse_pos))
+            draw_button(exit_button_rect, "Exit", exit_button_rect.collidepoint(mouse_pos))
 
         elif current_state == "settings":
             # Usa la funzione Settings() per gestire la schermata delle impostazioni
@@ -141,4 +206,4 @@ def StartMenu():
         pygame.display.update()
 
 # Avvia il menu principale
-StartMenu()
+

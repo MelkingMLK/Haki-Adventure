@@ -17,4 +17,4 @@ if __name__ == "__main__":
     #musiche
 
 
-#schermata creazione gioco (save o load)-> no file new game, si file load
+#schermata creazione gioco(new/load)-> si file load else new
