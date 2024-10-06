@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaa2c04-d20d-409f-b84d-6d170c87eab1" name="Changes" comment="Part 1- Creazione menù vuoto">
+    <list default="true" id="7eaa2c04-d20d-409f-b84d-6d170c87eab1" name="Changes" comment="Part 1.1- Creazione design menù (no function)">
+      <change afterPath="$PROJECT_DIR$/Log/General.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Log/settings_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Library/Settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
@@ -47,20 +49,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Settings.executor": "Run",
-    "Python.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Library" />
@@ -85,7 +87,19 @@
       <workItem from="1728148240530" duration="2773000" />
       <workItem from="1728153254355" duration="27000" />
       <workItem from="1728153295586" duration="21000" />
-      <workItem from="1728153328605" duration="8158000" />
+      <workItem from="1728153328605" duration="8238000" />
+      <workItem from="1728234884386" duration="4652000" />
+      <workItem from="1728240680427" duration="39000" />
+      <workItem from="1728240737430" duration="9000" />
+      <workItem from="1728240749070" duration="4000" />
+      <workItem from="1728240802913" duration="20000" />
+      <workItem from="1728240904822" duration="16000" />
+      <workItem from="1728240930500" duration="7000" />
+      <workItem from="1728240952405" duration="19000" />
+      <workItem from="1728241259651" duration="47000" />
+      <workItem from="1728241387939" duration="8000" />
+      <workItem from="1728241522519" duration="8000" />
+      <workItem from="1728241729215" duration="1577000" />
     </task>
     <task id="LOCAL-00001" summary="Part 0- Indicazioni generali">
       <option name="closed" value="true" />
@@ -119,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728157824654</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Part 1.1- Creazione design menù (no function)">
+      <option name="closed" value="true" />
+      <created>1728166694270</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728166694270</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,10 +150,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Part 0- Indicazioni generali" />
     <MESSAGE value="Part 1- Creazione menù vuoto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Part 1- Creazione menù vuoto" />
+    <MESSAGE value="Part 1.1- Creazione design menù (no function)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Part 1.1- Creazione design menù (no function)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FreeTimeUNI$Settings.coverage" NAME="Settings Coverage Results" MODIFIED="1728165883010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Library" />
-    <SUITE FILE_PATH="coverage/FreeTimeUNI$app.coverage" NAME="app Coverage Results" MODIFIED="1728166650846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FreeTimeUNI$app.coverage" NAME="app Coverage Results" MODIFIED="1728242925871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

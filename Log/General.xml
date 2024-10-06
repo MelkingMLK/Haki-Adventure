@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <!-- Risoluzioni dello schermo -->
+    <resolution current="1100x1150">
+        <option>1100x1150</option>
+        <option>1920x1080</option>
+        <option>1280x720</option>
+        <option>1366x768</option>
+        <option>2560x1440</option>
+        <option>3840x2160</option>
+    </resolution>
+
+    <!-- Volume principale (in percentuale) -->
+    <masterVolume current="80">
+        <option>0</option>
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        <option>60</option>
+        <option>70</option>
+        <option>80</option> <!-- Volume corrente -->
+        <option>90</option>
+        <option>100</option>
+    </masterVolume>
+
+    <!-- Volume degli effetti (in percentuale) -->
+    <effectsVolume current="60">
+        <option>0</option>
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        <option>60</option> <!-- Volume corrente -->
+        <option>70</option>
+        <option>80</option>
+        <option>90</option>
+        <option>100</option>
+    </effectsVolume>
+</settings>

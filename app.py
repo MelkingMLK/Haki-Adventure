@@ -15,3 +15,6 @@ if __name__ == "__main__":
     #ricerca ambiente (assets)
     #personaggi MAX 5+2
     #musiche
+
+
+#schermata creazione gioco (save o load)-> no file new game, si file load
